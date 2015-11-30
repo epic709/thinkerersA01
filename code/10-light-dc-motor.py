@@ -6,16 +6,16 @@ GPIO.setmode(GPIO.BCM)
 Motor1A = 23
 Motor1B = 24
 Motor1E = 18
-LDR_PIN = ?? #hint: check the wiring diagram!
+LDR_PIN = ?? #hint: check the wiring diagram and GPIO pinout!
 
 def motorSetup():
   # what is the code needed to set up the motor?
 
-def motorMoveForward:
+def motorMoveForward():
   # how do we move the motor forward?
   time.sleep(2)
 
-def motorMoveBackward:
+def motorMoveBackward():
   # how do we move the motor backward?
   time.sleep(2)
 
@@ -25,13 +25,14 @@ def ldr_value():
 lightLevel = # what LDR value do you want to use to represent neutral light?
 
 try:
+  # call motorSetup function here!
   while True:
     ldr_val = ldr_value()
     print("LDR: %s" % ldr_val)
-    if ldr_val < lightLevel - 1:
+    if ldr_val < lightLevel - 500:
       motorMoveBackward()
       print("It\'s getting dark, retreat....")
-    elif ldr_val > lightLevel + 1:
+    elif ldr_val > lightLevel + 500:
       motorMoveForward()
       print("It\'s bright outside, let\'s roll!")
     else:
